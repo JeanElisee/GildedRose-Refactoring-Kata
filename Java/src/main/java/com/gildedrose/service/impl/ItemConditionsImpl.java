@@ -1,26 +1,21 @@
-package com.gildedrose;
+package com.gildedrose.service.impl;
 
 import com.gildedrose.constant.SpecialProducts;
 import com.gildedrose.model.Item;
-import com.gildedrose.service.ItemConditions;
 import org.springframework.stereotype.Service;
+import com.gildedrose.service.ItemConditions;
 
 @Service
-class GildedRose {
+public class ItemConditionsImpl implements ItemConditions {
     static final int LOWEST_QUALITY = 0;
     static final int HIGHEST_QUALITY = 50;
 
-    Item[] items;
+    @Override
+    public Item ManageProduct(Item item) {
+        item.setQuality(item.getQuality() + this.ManageQuality(item));
+        item.setSellIn(UpdateProductValidity(item));
 
-    public GildedRose(Item[] items) {
-        this.items = items;
-    }
-
-    public void updateQuality() {
-        for (Item item : items) {
-            item.setQuality(item.getQuality() + this.ManageQuality(item));
-            item.setSellIn(UpdateProductValidity(item));
-        }
+        return item;
     }
 
     /*

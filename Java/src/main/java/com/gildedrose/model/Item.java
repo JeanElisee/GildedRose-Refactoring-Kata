@@ -1,5 +1,12 @@
-package com.gildedrose;
+package com.gildedrose.model;
 
+import lombok.*;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+//@ToString
 public class Item {
 
     public String name;
@@ -7,12 +14,6 @@ public class Item {
     public int sellIn;
 
     public int quality;
-
-    public Item(String name, int sellIn, int quality) {
-        this.name = name;
-        this.sellIn = sellIn;
-        this.quality = quality;
-    }
 
    @Override
    public String toString() {
