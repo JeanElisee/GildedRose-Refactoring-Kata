@@ -12,9 +12,8 @@ public class ItemConditions {
     static final int HIGHEST_QUALITY = 50;
 
     public Item ManageProduct(Item item) {
-        item.quality = item.quality + this.ManageQuality(item);
         item.sellIn = UpdateProductValidity(item);
-
+        item.quality = item.quality + this.ManageQuality(item);
         return item;
     }
 
@@ -43,7 +42,7 @@ public class ItemConditions {
      */
     public int ManageQuality(Item item) {
         int valueToAdd;
-        // We have two special product
+        // Cases for the special products
         // We need to check if the item is part of them, otherwise we return 0
         if (item.name.toLowerCase().contains(SpecialProducts.BACKSTAGE_PASSES.getKeyword())) {
             if (item.sellIn > 10) {
